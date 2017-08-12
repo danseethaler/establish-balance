@@ -54,7 +54,6 @@ const navLinkRuleActive = css({
 })
 
 export const NavLink = ({ to, children }) => {
-  console.log('navLinkRuleActive', navLinkRuleActive.toString())
   return (
     <Link
       to={to}

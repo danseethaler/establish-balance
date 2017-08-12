@@ -4,6 +4,7 @@ import Link from 'gatsby-link'
 import { NavLink, MobileNavLink, Hamburger } from '../cps/header'
 import Helmet from 'react-helmet'
 import ebLogoImg from '../assets/photos/eb_logo.png'
+import { ResizeHelper } from '../cps/helpers'
 
 import './index.css'
 
@@ -95,23 +96,26 @@ class MobileHeader extends React.Component {
 }
 
 class TemplateWrapper extends React.Component {
-  state = { body: 'desktop' }
-  updateDimensions = () => {
-    if (window.innerWidth < 768) this.setState({ body: 'phone' })
-    else if (window.innerWidth < 992) this.setState({ body: 'tablet' })
-    else if (window.innerWidth < 1200) this.setState({ body: 'desktop' })
-    else this.setState({ body: 'large' })
+  state = { body: this.getWidthLabel() }
+
+  getWidthLabel() {
+    if (typeof window === 'undefined') return 'phone'
+
+    if (window.innerWidth < 768) return 'phone'
+    else if (window.innerWidth < 992) return 'tablet'
+    else if (window.innerWidth < 1200) return 'desktop'
+    return 'large'
   }
-  componentDidMount() {
-    this.updateDimensions()
-    window.addEventListener('resize', this.updateDimensions)
-  }
-  componentDidUnmount() {
-    window.removeEventListener('resize', this.updateDimensions)
+  setBodyWidth = () => {
+    console.log('this.getWidthLabel()', this.getWidthLabel())
+    this.setState({ body: this.getWidthLabel() })
   }
 
   render() {
     const { children } = this.props
+    const { body } = this.state
+    console.log('body', body)
+
     const links = [
       {
         text: 'Home',
@@ -129,6 +133,7 @@ class TemplateWrapper extends React.Component {
 
     return (
       <div>
+        <ResizeHelper onWindowResize={this.setBodyWidth} />
         <Helmet
           title="Establish Balance"
           meta={[
@@ -139,7 +144,7 @@ class TemplateWrapper extends React.Component {
             { name: 'keywords', content: 'heatlh, coaching' },
           ]}
         />
-        {this.state.body === 'phone'
+        {body === 'phone'
           ? <MobileHeader links={links} />
           : <Header links={links} />}
         <div
