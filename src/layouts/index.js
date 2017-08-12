@@ -95,19 +95,18 @@ class MobileHeader extends React.Component {
 }
 
 class TemplateWrapper extends React.Component {
+  state = { body: 'desktop' }
   updateDimensions = () => {
     if (window.innerWidth < 768) this.setState({ body: 'phone' })
     else if (window.innerWidth < 992) this.setState({ body: 'tablet' })
     else if (window.innerWidth < 1200) this.setState({ body: 'desktop' })
     else this.setState({ body: 'large' })
   }
-  componentWillMount() {
-    this.updateDimensions()
-  }
   componentDidMount() {
+    this.updateDimensions()
     window.addEventListener('resize', this.updateDimensions)
   }
-  componentWillUnmount() {
+  componentDidUnmount() {
     window.removeEventListener('resize', this.updateDimensions)
   }
 
