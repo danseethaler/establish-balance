@@ -33,7 +33,7 @@ const Header = ({ links }) =>
         <NavLink
           key={link.url}
           to={link.url}
-          active={link.url === window.location.pathname}
+          active={window && link.url === window.location.pathname}
         >
           {link.text}
         </NavLink>
@@ -101,8 +101,8 @@ class MobileHeader extends React.Component {
 class TemplateWrapper extends React.Component {
   updateDimensions = () => {
     this.setState({
-      width: window.innerWidth,
-      height: window.innerHeight,
+      width: window ? window.innerWidth : 0,
+      height: window ? window.innerHeight : 0,
     })
   }
   componentWillMount() {
@@ -144,7 +144,7 @@ class TemplateWrapper extends React.Component {
             { name: 'keywords', content: 'heatlh, coaching' },
           ]}
         />
-        {window.innerWidth > 800
+        {window && window.innerWidth > 800
           ? <Header links={links} />
           : <MobileHeader links={links} />}
         <div
