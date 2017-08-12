@@ -53,11 +53,13 @@ const navLinkRuleActive = css({
   },
 })
 
-export const NavLink = ({ to, active, children }) => {
+export const NavLink = ({ to, children }) => {
+  console.log('navLinkRuleActive', navLinkRuleActive.toString())
   return (
     <Link
       to={to}
-      className={`${active ? navLinkRuleActive : navLinkRule} nav-link`}
+      className={`${navLinkRule} nav-link`}
+      activeClassName={navLinkRuleActive.toString()}
     >
       {children}
     </Link>

@@ -30,11 +30,7 @@ const Header = ({ links }) =>
     </Link>
     <div>
       {links.map(link =>
-        <NavLink
-          key={link.url}
-          to={link.url}
-          active={window && link.url === window.location.pathname}
-        >
+        <NavLink key={link.url} to={link.url}>
           {link.text}
         </NavLink>
       )}
@@ -100,10 +96,10 @@ class MobileHeader extends React.Component {
 
 class TemplateWrapper extends React.Component {
   updateDimensions = () => {
-    this.setState({
-      width: window ? window.innerWidth : 0,
-      height: window ? window.innerHeight : 0,
-    })
+    if (window.innerWidth < 768) this.setState({ body: 'phone' })
+    else if (window.innerWidth < 992) this.setState({ body: 'tablet' })
+    else if (window.innerWidth < 1200) this.setState({ body: 'desktop' })
+    else this.setState({ body: 'large' })
   }
   componentWillMount() {
     this.updateDimensions()
@@ -124,11 +120,11 @@ class TemplateWrapper extends React.Component {
       },
       {
         text: 'Meet Anna',
-        url: '/meet-anna',
+        url: '/meet-anna/',
       },
       {
-        text: 'Success Team',
-        url: '/success',
+        text: 'Practice',
+        url: '/practice/',
       },
     ]
 
@@ -144,9 +140,9 @@ class TemplateWrapper extends React.Component {
             { name: 'keywords', content: 'heatlh, coaching' },
           ]}
         />
-        {window && window.innerWidth > 800
-          ? <Header links={links} />
-          : <MobileHeader links={links} />}
+        {this.state.body === 'phone'
+          ? <MobileHeader links={links} />
+          : <Header links={links} />}
         <div
           style={{
             margin: '0 auto',
