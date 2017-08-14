@@ -57,6 +57,7 @@ export const NavLink = ({ to, children }) => {
   return (
     <Link
       to={to}
+      exact
       className={`${navLinkRule} nav-link`}
       activeClassName={navLinkRuleActive.toString()}
     >
