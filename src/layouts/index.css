@@ -5,6 +5,7 @@ html {
 }
 body {
   margin: 0;
+  font-size: 14px;
 }
 article,
 aside,
@@ -98,11 +99,6 @@ samp {
 figure {
   margin: 1em 40px;
 }
-hr {
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible;
-}
 button,
 input,
 optgroup,
@@ -183,7 +179,7 @@ textarea {
   font: inherit;
 }
 html {
-  font: 112.5%/1.45em georgia, serif;
+  /*font: 112.5%/1.45em georgia, serif;*/
   box-sizing: border-box;
   overflow-y: scroll;
 }
@@ -476,17 +472,10 @@ iframe {
   margin-bottom: 1.45rem;
 }
 hr {
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  margin-bottom: calc(1.45rem - 1px);
-  background: hsla(0, 0%, 0%, 0.2);
   border: none;
-  height: 1px;
+  border-bottom: 1px solid #ebebeb;
+  height: 0;
+  margin: 20px;
 }
 address {
   margin-left: 0;
@@ -619,6 +608,6 @@ pre tt:after {
 }
 @media only screen and (max-width: 480px) {
   html {
-    font-size: 100%;
+    /*font-size: 100%;*/
   }
 }
