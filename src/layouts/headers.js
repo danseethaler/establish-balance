@@ -10,7 +10,6 @@ export const Header = ({ links }) =>
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      padding: '10px 20px',
     }}
   >
     <Link to="/">
@@ -19,7 +18,7 @@ export const Header = ({ links }) =>
         style={{
           width: 140,
           padding: 10,
-          margin: 20,
+          margin: 10,
         }}
         className="logo"
         alt=""
