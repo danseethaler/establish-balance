@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 export class ResizeHelper extends React.Component {
   static propTypes = {
-    onWindowResize: PropTypes.func,
+    onWindowResize: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
@@ -19,16 +19,11 @@ export class ResizeHelper extends React.Component {
   }
 
   handleResize = event => {
-    if ('function' === typeof this.props.onWindowResize) {
-      // we want this to fire immediately the first time but wait to fire again
-      // that way when you hit a break it happens fast and only lags if you hit another break immediately
-      if (!this.resizeTimer) {
-        this.props.onWindowResize(event)
-        this.resizeTimer = setTimeout(() => {
-          this.resizeTimer = false
-        }, 250) // this debounce rate could be passed as a prop
-      }
-    }
+    // Inverse Debouncing but always calling
+    if (this.resizeTimer) clearTimeout(this.resizeTimer)
+    this.resizeTimer = setTimeout(() => {
+      this.props.onWindowResize(event)
+    }, 20)
   }
 
   render() {

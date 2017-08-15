@@ -4,7 +4,7 @@ import Link from 'gatsby-link'
 import { NavLink, MobileNavLink, Hamburger } from '../cps/header'
 import ebLogoImg from '../assets/photos/eb_logo.png'
 
-export const Header = ({ links }) =>
+export const Header = ({ links, onNav }) =>
   <div
     style={{
       display: 'flex',
@@ -26,7 +26,7 @@ export const Header = ({ links }) =>
     </Link>
     <div>
       {links.map(link =>
-        <NavLink key={link.url} to={link.url}>
+        <NavLink onGo={onNav} key={link.url} to={link.url}>
           {link.text}
         </NavLink>
       )}
@@ -54,7 +54,7 @@ export class MobileHeader extends React.Component {
             zIndex: 100,
             width: '100%',
             display: 'flex',
-            height: this.state.open ? 42 * links.length : 0,
+            height: this.state.open ? 46 * links.length : 0,
             flexDirection: 'column',
             justifyContent: 'space-between',
             alignItems: 'center',
@@ -67,6 +67,7 @@ export class MobileHeader extends React.Component {
               key={link.url}
               to={link.url}
               onGo={() => {
+                this.props.onNav()
                 this.quickClose()
                 this.setState({ open: false })
               }}

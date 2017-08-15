@@ -24,6 +24,15 @@ class TemplateWrapper extends React.Component {
     this.setState({ body: this.getWidthLabel() })
   }
 
+  navigate = () => {
+    // Transition the content container
+    this.refs._content_container.style.transition = 'none'
+    this.refs._content_container.style.opacity = 0
+    this.refs._content_container.offsetHeight // This forces the reflow
+    this.refs._content_container.style.transition = '.5s ease-out'
+    this.refs._content_container.style.opacity = 1
+  }
+
   render() {
     const { children } = this.props
     const { body } = this.state
@@ -61,9 +70,25 @@ class TemplateWrapper extends React.Component {
           ]}
         />
         {body === 'phone'
-          ? <MobileHeader links={links} />
-          : <Header links={links} />}
-        {children()}
+          ? <MobileHeader onNav={this.navigate} links={links} />
+          : <Header onNav={this.navigate} links={links} />}
+        <div ref="_content_container" style={{ opacity: 1 }}>
+          {children()}
+        </div>
+        <hr />
+        <footer
+          style={{
+            fontFamily: 'Lato, sans-serif',
+            textTransform: 'uppercase',
+            textAlign: 'center',
+            paddingTop: 15,
+            paddingBottom: 30,
+            fontWeight: '300',
+            paddingBottom: '40px',
+          }}
+        >
+          copyright © establish balance 2015
+        </footer>
       </Container>
     )
   }

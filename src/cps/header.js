@@ -6,6 +6,7 @@ import Link, { navigateTo } from 'gatsby-link'
 
 const navLinkRule = css({
   padding: '10px',
+  fontSize: '1.3em',
   fontWeight: '300',
   cursor: 'pointer',
   position: 'relative',
@@ -53,10 +54,13 @@ const navLinkRuleActive = css({
   },
 })
 
-export const NavLink = ({ to, children }) => {
+export const NavLink = ({ to, children, onGo }) => {
   return (
     <Link
       to={to}
+      onClick={() => {
+        onGo()
+      }}
       exact
       className={`${navLinkRule} nav-link`}
       activeClassName={navLinkRuleActive.toString()}
@@ -95,7 +99,7 @@ const activeNavLineRules = [
 const mobileNavLinkRule = css({
   padding: 12,
   fontWeight: 300,
-  fontSize: '1.1em',
+  fontSize: '1.3em',
   cursor: 'pointer',
   fontFamily: '"Lato", sans-serif',
   color: '#FFF',
@@ -106,7 +110,6 @@ export const MobileNavLink = ({ to, children, onGo }) =>
   <div
     onClick={() => {
       onGo()
-      console.log('naving')
       navigateTo(to)
     }}
     className={`${mobileNavLinkRule} nav-link`}
@@ -123,6 +126,7 @@ export const Hamburger = ({ open, onToggle }) =>
       // display: 'none',
       outline: 'none',
       backgroundColor: '#FFF',
+      tapHighlightColor: 'rgba(0,0,0,0)',
     }}
     type="button"
     className="nav-button"
