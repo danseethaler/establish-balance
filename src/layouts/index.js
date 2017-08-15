@@ -28,8 +28,8 @@ class TemplateWrapper extends React.Component {
     // Transition the content container
     this.refs._content_container.style.transition = 'none'
     this.refs._content_container.style.opacity = 0
-    this.refs._content_container.offsetHeight // This forces the reflow
-    this.refs._content_container.style.transition = '.5s ease-out'
+    this.refs._content_container.offsetHeight // Force the reflow
+    this.refs._content_container.style.transition = '.6s ease-in'
     this.refs._content_container.style.opacity = 1
   }
 
@@ -53,6 +53,7 @@ class TemplateWrapper extends React.Component {
       {
         text: 'Get Started',
         url: '/start',
+        cta: true,
       },
     ]
 

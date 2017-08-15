@@ -55,7 +55,26 @@ const navLinkRuleActive = css({
   },
 })
 
-export const NavLink = ({ to, children, onGo }) => {
+const navLinkRuleCTA = css({
+  backgroundColor: colors.primary,
+  fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+  fontSize: '1.2em',
+  borderRadius: 3,
+  color: colors.white,
+  padding: '4px 12px',
+  fontWeight: 300,
+  cursor: 'pointer',
+  position: 'relative',
+  textDecoration: 'none',
+  marginLeft: 10,
+  transition: 'all 0.3s',
+  opacity: 0.9,
+  ':hover': {
+    opacity: 1,
+  },
+})
+
+export const NavLink = ({ to, children, onGo, cta }) => {
   return (
     <Link
       to={to}
@@ -63,8 +82,8 @@ export const NavLink = ({ to, children, onGo }) => {
         onGo()
       }}
       exact
-      className={`${navLinkRule} nav-link`}
-      activeClassName={navLinkRuleActive.toString()}
+      className={`${cta ? navLinkRuleCTA : navLinkRule} nav-link`}
+      activeClassName={cta ? '' : navLinkRuleActive.toString()}
     >
       {children}
     </Link>

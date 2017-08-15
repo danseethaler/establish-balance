@@ -1,11 +1,24 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import headerImg from '../assets/photos/success_banner.jpg'
+import { H2, P } from '../cps/tags'
 
-const SecondPage = () =>
+const PracticePage = () =>
   <div>
-    <h1>Practice</h1>
-    <p>Energize</p>
-    <Link to="/">Go back to the homepage</Link>
+    <img src={headerImg} alt="header" />
+    <hr />
+    <div
+      style={{
+        padding: '0 15px',
+      }}
+    >
+      <H2>Meet Anna</H2>
+      <P>
+        Anna Seethaler is a certified Health and Wellness Coach in Lehi, Utah.
+        She has studied over 100 dietary theories, practical lifestyle
+        management techniques and innovative coaching methods at The Institute
+        for Integrative Nutrition.
+      </P>
+    </div>
   </div>
 
-export default SecondPage
+export default PracticePage

@@ -27,7 +27,7 @@ export const Header = ({ links, onNav }) =>
     </Link>
     <div>
       {links.map(link =>
-        <NavLink onGo={onNav} key={link.url} to={link.url}>
+        <NavLink onGo={onNav} cta={link.cta} key={link.url} to={link.url}>
           {link.text}
         </NavLink>
       )}

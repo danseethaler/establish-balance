@@ -9,7 +9,7 @@ const SecondPage = () =>
       <P>
         is a certified Health and Wellness Coach located in Lehi, Utah. She
         received her training from The Institute for Integrative Nutrition (IIN)
-        alongside some of the top health and wellness experts in the world.
+        alongside some of the top health and wellness experts in the world.{' '}
         <strong>She has studied over 100 dietary theories</strong>, practical
         lifestyle management techniques, innovative coaching methods and more
         through IIN’s cutting-edge Health Coach Training Program.
