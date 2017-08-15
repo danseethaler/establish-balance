@@ -1,4 +1,5 @@
 import glamorous from 'glamorous'
+import { colors } from '../assets/style'
 
 export const Container = glamorous.div({
   marginRight: 'auto',
@@ -16,14 +17,14 @@ export const Container = glamorous.div({
 })
 
 export const H2 = glamorous.h2({
-  borderLeft: '3px solid #4a2245',
+  borderLeft: `3px solid ${colors.accent}`,
   paddingLeft: 9,
   left: -13,
   position: 'relative',
   margin: '10px 10px 20px 9px',
   fontFamily: '"Roboto", sans-serif',
   fontSize: '23px',
-  color: '#555459',
+  color: colors.body,
   fontWeight: 400,
   lineHeight: 1.1,
 })
@@ -33,6 +34,6 @@ export const P = glamorous.p({
   fontWeight: '300',
   fontSize: '1.2em',
   fontFamily: '"Lato", sans-serif',
-  color: '#555459',
+  color: colors.body,
   margin: '0 0 10px',
 })

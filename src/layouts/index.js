@@ -82,9 +82,8 @@ class TemplateWrapper extends React.Component {
             textTransform: 'uppercase',
             textAlign: 'center',
             paddingTop: 15,
-            paddingBottom: 30,
+            paddingBottom: 40,
             fontWeight: '300',
-            paddingBottom: '40px',
           }}
         >
           copyright © establish balance 2015

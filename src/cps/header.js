@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import { css } from 'glamor'
 import Link, { navigateTo } from 'gatsby-link'
+import { colors } from '../assets/style'
 
 const navLinkRule = css({
   padding: '10px',
@@ -12,7 +13,7 @@ const navLinkRule = css({
   position: 'relative',
   fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
   textDecoration: 'none',
-  color: '#000',
+  color: colors.body,
   marginLeft: 10,
   ':hover&::before': {
     visibility: 'visible',
@@ -25,7 +26,7 @@ const navLinkRule = css({
     width: '100%',
     bottom: '0',
     left: '0',
-    backgroundColor: '#e54d42',
+    backgroundColor: colors.primary,
     visibility: 'hidden',
     transform: 'scaleX(0)',
     transition: 'all 0.3s ease-in-out 0s',
@@ -39,7 +40,7 @@ const navLinkRuleActive = css({
   position: 'relative',
   fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
   textDecoration: 'none',
-  color: '#000',
+  color: colors.body,
   marginLeft: 10,
   '&::before': {
     content: '""',
@@ -48,7 +49,7 @@ const navLinkRuleActive = css({
     width: '100%',
     bottom: '0',
     left: '0',
-    backgroundColor: '#e54d42',
+    backgroundColor: colors.primary,
     visibility: 'visible',
     transform: 'scaleX(1)',
   },
@@ -77,7 +78,7 @@ const navLineRule = css({
   marginLeft: 15,
   width: 30,
   height: 3,
-  backgroundColor: '#e54d42',
+  backgroundColor: colors.primary,
   borderRadius: '1px',
   transition: 'all .5s ease',
 })
@@ -102,7 +103,7 @@ const mobileNavLinkRule = css({
   fontSize: '1.3em',
   cursor: 'pointer',
   fontFamily: '"Lato", sans-serif',
-  color: '#FFF',
+  color: colors.white,
   marginLeft: 10,
 })
 
@@ -125,7 +126,7 @@ export const Hamburger = ({ open, onToggle }) =>
       width: 70,
       // display: 'none',
       outline: 'none',
-      backgroundColor: '#FFF',
+      backgroundColor: colors.white,
       tapHighlightColor: 'rgba(0,0,0,0)',
     }}
     type="button"

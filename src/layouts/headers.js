@@ -3,6 +3,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import { NavLink, MobileNavLink, Hamburger } from '../cps/header'
 import ebLogoImg from '../assets/photos/eb_logo.png'
+import { colors } from '../assets/style'
 
 export const Header = ({ links, onNav }) =>
   <div
@@ -49,8 +50,8 @@ export class MobileHeader extends React.Component {
       <div className="nav">
         <div
           style={{
-            backgroundColor: '#e54d42',
-            color: '#fff',
+            backgroundColor: colors.primary,
+            color: colors.white,
             zIndex: 100,
             width: '100%',
             display: 'flex',
